@@ -1,1 +1,1 @@
-# Flask_Full_Featured_BlopApp
+# Flask_Full_Featured_BlogApp
