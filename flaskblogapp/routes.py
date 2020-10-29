@@ -1,32 +1,7 @@
-from datetime import datetime
-import pytz
-from flask import Flask,render_template,url_for,flash,redirect
-from flask_sqlalchemy import SQLAlchemy
-from forms import RegistrationForm,LoginForm
-
-app=Flask(__name__)
-app.config['SECRET_KEY']='a1e824f498ef42682a1e81bce53cbd2db3'
-app.config['SQLALCHEMY_DATABASE_URI']='sqlite:///site.db'
-
-db=SQLAlchemy(app)
-
-class User(db.Model):
-
-    id=db.Column(db.Integer,primary_key=True)
-    username=db.Column(db.String(10),unique=True,nullable=False)
-    email=db.Column(db.String(100),unique=True,nullable=False)
-    image_file=db.Column(db.String(20),unique=True,nullable=False,default='default.jpg')
-    password=db.Column(db.String(60),nullable=False)
-
-    def __repr__(self):
-        return f"User({'self.username'},{'self.email'},{'self.image_file'})"
-
-class Post(db.Model):
-
-    ist=pytz.timezone('Asia/Kolkata')
-    id=db.Column(db.Integer,primary_key=True)
-    title=db.Column(db.String(100),nullable=False)
-    date_posted=db.Column(db.DateTime,nullable=False,default=datetime.now(ist))
+from flask import render_template,url_for,flash,redirect
+from flaskblogapp import app
+from flaskblogapp.forms import RegistrationForm,LoginForm
+from flaskblogapp.models import User,Post
 
 posts=[
     {
@@ -70,6 +45,3 @@ def login():
         else:
             flash('Login unsucessful,Please check your credentials','danger')
     return render_template('login.html',title="Login",form=form)
-
-if __name__=='__main__':
-    app.run(debug=True)
