@@ -1,4 +1,4 @@
-#!/home/davishek7/Desktop/FlaskApp/flaskblog/bin/python3
+#!/home/davishek7/Desktop/Flask_Full_Featured_BlogApp/flaskblog/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
