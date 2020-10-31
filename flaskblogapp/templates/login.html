@@ -39,12 +39,12 @@
       <div class="form-group">
         {{form.submit(class="btn btn-outline-info btn-sm")}}
         <small class="text-muted ml-2">
-            <a href="{{url_for('reset_request')}}">Forgot Password</a>
+            <a href="{{url_for('users.reset_request')}}">Forgot Password</a>
         </small>
       </div>
       <div class="border-top pt-3">
         <small class="text-muted ml-2">
-          Need an account? <a href="{{url_for('register')}}">Sign Up now</a>
+          Need an account? <a href="{{url_for('users.register')}}">Sign Up now</a>
         </small>
       </div>
     </form>
