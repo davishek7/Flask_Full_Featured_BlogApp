@@ -3,7 +3,7 @@ from flask_wtf.file import FileField,FileAllowed
 from wtforms import StringField,TextAreaField,SubmitField,PasswordField,BooleanField
 from wtforms.validators import DataRequired,ValidationError,Length,Email,EqualTo
 from flask_login import current_user
-from flaskblogapp.models import User
+from flaskblogapp.models import BlogUser
 
 class RegistrationForm(FlaskForm):
     username = StringField('Username', validators=[
@@ -20,14 +20,14 @@ class RegistrationForm(FlaskForm):
 
     def validate_username(self, username):
 
-        user = User.query.filter_by(username=username.data).first()
+        user = BlogUser.query.filter_by(username=username.data).first()
         if user:
             raise ValidationError(
                 'That username is taken, Please choose a different one')
 
     def validate_email(self, email):
 
-        user = User.query.filter_by(email=email.data).first()
+        user = BlogUser.query.filter_by(email=email.data).first()
         if user:
             raise ValidationError('That email is already registered')
 
@@ -55,14 +55,14 @@ class UpdateAccountForm(FlaskForm):
 
     def validate_username(self, username):
         if username.data != current_user.username:
-            user = User.query.filter_by(username=username.data).first()
+            user = BlogUser.query.filter_by(username=username.data).first()
             if user:
                 raise ValidationError(
                     'That username is taken, Please choose a different one')
 
     def validate_email(self, email):
         if email.data != current_user.email:
-            user = User.query.filter_by(email=email.data).first()
+            user = BlogUser.query.filter_by(email=email.data).first()
             if user:
                 raise ValidationError('That email is already registered')
 
@@ -72,7 +72,7 @@ class RequestResetForm(FlaskForm):
 
     def validate_email(self, email):
 
-        user = User.query.filter_by(email=email.data).first()
+        user = BlogUser.query.filter_by(email=email.data).first()
         if user is None:
             raise ValidationError('There is no account with that email. You must register first.')
 
