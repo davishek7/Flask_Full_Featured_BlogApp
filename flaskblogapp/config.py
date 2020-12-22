@@ -1,4 +1,6 @@
 import os
+
+
 class Config:
     CKEDITOR_PKG_TYPE = 'full'
     SECRET_KEY=os.environ.get('SECRET_KEY')
