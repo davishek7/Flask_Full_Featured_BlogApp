@@ -10,7 +10,6 @@
         <div>
             <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{url_for('posts.update_post',post_id=post.id)}}">Update</a>
             <button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal">Delete</button>
-            <div class="fb-like" data-href="http://127.0.0.1:5000/post/post.id" data-width="" data-layout="button_count" data-action="like" data-size="small" data-share="true"></div>
         </div>
       {% endif %}
     </div>
@@ -18,6 +17,5 @@
     <p class="article-content">{{ post.content | safe }}</p>
   </div>
 </article>
-<div class="fb-comments" data-href="http://127.0.0.1:5000/post/post_id" data-width="" data-numposts="5"></div>
 {%include 'delete_modal.html'%}
 {%endblock content%}
