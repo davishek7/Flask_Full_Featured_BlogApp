@@ -5,6 +5,7 @@ from flask_login import LoginManager
 from flask_mail import Mail
 from flaskblogapp.config import Config
 from flask_ckeditor import CKEditor
+from whitenoise import WhiteNoise
 
 db=SQLAlchemy()
 bcrypt=Bcrypt()
@@ -33,5 +34,12 @@ def create_app(config_class=Config):
     app.register_blueprint(posts)
     app.register_blueprint(main)
     app.register_blueprint(errors)
+
+    app.wsgi_app = WhiteNoise(app.wsgi_app)
+
+    my_static_folders = (
+    'flaskblogapp/static/css/',
+    'flaskblogapp/static/profile_pics'
+    )
 
     return app
