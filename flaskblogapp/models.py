@@ -1,8 +1,9 @@
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from datetime import datetime
 from flask import current_app
-from flaskblogapp import db,login_manager
+from flaskblogapp import db,login_manager,admin
 from flask_login import UserMixin
+from flask_admin.contrib.sqla import ModelView
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -45,3 +46,7 @@ class Post(db.Model):
 
     def __repr__(self):
         return f"User('{self.title}','{self.date_posted}')"
+
+# Add administrative views here
+admin.add_view(ModelView(BlogUser, db.session))
+admin.add_view(ModelView(Post, db.session))
