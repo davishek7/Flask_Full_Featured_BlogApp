@@ -46,7 +46,3 @@ class Post(db.Model):
 
     def __repr__(self):
         return f"User('{self.title}','{self.date_posted}')"
-
-# Add administrative views here
-admin.add_view(ModelView(BlogUser, db.session))
-admin.add_view(ModelView(Post, db.session))
