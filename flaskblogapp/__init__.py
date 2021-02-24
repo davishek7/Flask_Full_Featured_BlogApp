@@ -38,11 +38,10 @@ def create_app(config_class=Config):
     app.register_blueprint(main)
     app.register_blueprint(errors)
 
-    app.wsgi_app = WhiteNoise(app.wsgi_app)
-
-    my_static_folders = (
-    'flaskblogapp/static/css/',
-    'flaskblogapp/static/profile_pics'
+    app.wsgi_app = WhiteNoise(
+    app.wsgi_app,
+    root='flaskblogapp/static/',
+    prefix='static/'
     )
 
     return app
