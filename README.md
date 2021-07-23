@@ -4,7 +4,7 @@
 
 2. On the virtual environment install required dependencies using the requirements file using the 'pipenv install -r requirements.txt'.
 
-3. Create the database tables using following command: Run a python interactive shell using 'pyhton' command on your terminal and run the following command.
+3. Create the database tables using following command: Run a python interactive shell using 'python' command on your terminal and run the following command.
 
 		>>> from flaskblogapp import create_app
 		>>> app = create_app()
@@ -18,3 +18,4 @@ windows:https://youtu.be/IolxqkL7cD8
 linux/mac:https://youtu.be/5iWhQWVXosU (if .bash_profile doesn't work for you on linux distros,use .bashrc file for storing variables.)
 
 Thanks to Corey Schafer(https://www.youtube.com/c/Coreyms) for this tutorial.
+
